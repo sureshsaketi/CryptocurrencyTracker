@@ -1,0 +1,30 @@
+.li-item {
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 25px;
+  padding-right: 25px;
+  height: 43px;
+}
+.currency-logo-container {
+  display: flex;
+}
+
+.currency-logo {
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  align-self: center;
+}
+.currency-name {
+  margin-left: 15px;
+  padding-left: 0;
+}
+.text {
+  font-size: 14px;
+  width: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
