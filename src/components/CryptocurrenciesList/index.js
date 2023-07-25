@@ -26,8 +26,8 @@ class CryptocurrenciesList extends Component {
     this.setState({currenciesList: updatedData, isLoading: false})
   }
 
-  render() {
-    const {currenciesList, isLoading} = this.state
+  renderCryptocurrenciesList = () => {
+    const {currenciesList} = this.state
     return (
       <div className="currency-list-container">
         <h1 className="currency-heading">Cryptocurrency Tracker</h1>
@@ -46,21 +46,27 @@ class CryptocurrenciesList extends Component {
               <p className="currency">EURO</p>
             </div>
           </li>
-          {isLoading ? (
-            <div data-testid="loader">
-              <Loader type="Rings" color="#ffffff" height={80} width={80} />
-            </div>
-          ) : (
-            <>
-              {currenciesList.map(eachCurrency => (
-                <CryptocurrencyItem
-                  currencyDetails={eachCurrency}
-                  key={eachCurrency.id}
-                />
-              ))}
-            </>
-          )}
+
+          {currenciesList.map(eachCurrency => (
+            <CryptocurrencyItem
+              currencyDetails={eachCurrency}
+              key={eachCurrency.id}
+            />
+          ))}
         </ul>
+      </div>
+    )
+  }
+
+  renderLoading = () => (
+    <Loader type="Rings" color="#ffffff" height={80} width={80} />
+  )
+
+  render() {
+    const {isLoading} = this.state
+    return (
+      <div data-testid="loader">
+        {isLoading ? this.renderLoading() : this.renderCryptocurrenciesList()}
       </div>
     )
   }
